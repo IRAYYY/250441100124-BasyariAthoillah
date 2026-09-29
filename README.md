@@ -6,53 +6,106 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+<h1>PENJELASAN</h1>
+# 🎓 SIM Mahasiswa (Sistem Informasi Mahasiswa)
 
-## About Laravel
+Aplikasi web sederhana berbasis **Laravel** untuk mengelola dan menampilkan data mahasiswa. Proyek ini dirancang sebagai sarana latihan bagi pemula untuk memahami konsep dasar arsitektur **MVC (Model-View-Controller)**, sistem **Routing**, serta templating menggunakan **Blade**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 Apa Saja yang Dipelajari di Sini?
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Di dalam proyek ini, kita berkenalan dengan 4 pilar penting dalam Laravel:
+* **Routing**: Ibarat penunjuk jalan, bagian ini bertugas mengarahkan alamat website (URL) yang diakses pengguna langsung ke tampilan atau ke *Controller*.
+* **Controller**: Otak atau pengurus di balik layar. Tugasnya menyiapkan data, menyaring data mahasiswa berdasarkan NIM, atau menghitung statistik.
+* **Blade Templating**: Alat perakit tampilan agar kita tidak perlu menulis kode HTML yang sama berulang-ulang. Tampilan web dibagi menjadi potongan-potongan kecil yang rapi (`layouts`, `partials`, dan `components`).
+* **Data Collection**: Cara mengolah data latihan (*dummy*) mahasiswa dengan memanfaatkan fitur koleksi bawaan Laravel (`collect`).
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🔄 Bagaimana Sih Cara Kerjanya? (Alur MVC)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Bayangkan proses saat kamu membuka sebuah halaman web:
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
 
-## Agentic Development
+[ Browser / Pengguna ]
+        │
+        │ 1. Pengguna membuka URL (misal: /mahasiswa)
+        ▼
+[ routes/web.php ]
+        │ 2. Laravel mencocokkan URL dengan rute yang tersedia
+        ▼
+[ MahasiswaController ]
+        │ 3. Controller menyiapkan data mahasiswa
+        ▼
+[ resources/views/mahasiswa/index.blade.php ]
+        │ 4. Blade merakit data dan tampilan HTML, dibungkus layout utama
+        ▼
+[ Tampilan Website di Layar ]
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 
-```bash
-composer require laravel/boost --dev
+---
 
-php artisan boost:install
-```
+## 🛣 Daftar Halaman pada Aplikasi
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Semua jalur URL diatur di dalam file `routes/web.php`. Berikut adalah rincian halaman yang tersedia:
 
-## Contributing
+1. **Halaman Beranda (`/`)**
+   - Rute: `beranda`
+   - Berisi sambutan awal saat pertama kali web dibuka.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. **Halaman Tentang (`/tentang`) & Kontak (`/kontak`)**
+   - Rute: `tentang` & `kontak`
+   - Halaman informasi statis yang langsung memanggil view masing-masing tanpa lewat *controller*.
 
-## Code of Conduct
+3. **Daftar Mahasiswa (`/mahasiswa`)**
+   - Rute: `mahasiswa.index` | Controller: `MahasiswaController@index`
+   - Menampilkan tabel lengkap berisi daftar seluruh mahasiswa, nomor urut otomatis, badge status (aktif/cuti/lulus), dan tombol detail.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. **Detail Mahasiswa (`/mahasiswa/{nim}`)**
+   - Rute: `mahasiswa.show` | Controller: `MahasiswaController@show`
+   - Menampilkan informasi mendalam dari satu mahasiswa tertentu berdasarkan NIM-nya. Jika NIM tidak ditemukan, sistem otomatis memunculkan halaman error 404.
 
-## Security Vulnerabilities
+5. **Profil Mahasiswa (`/profil`)**
+   - Rute: `mahasiswa.profil` | Controller: `MahasiswaController@profil`
+   - Contoh halaman profil akun tertentu.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. **Dashboard Ringkasan (`/dashboard`)**
+   - Rute: `dashboard` | Controller: `DashboardController@index`
+   - Menampilkan kartu statistik (*card*) berisi ringkasan data seperti total mahasiswa, jumlah yang aktif, dan yang sedang cuti.
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📁 Struktur Folder Penting
+
+Supaya mudah dipelajari, file-file utama dalam proyek ini disusun dengan struktur berikut:
+
+sim-mahasiswa/
+├── app/Http/Controllers/
+│   ├── DashboardController.php     # Mengatur data untuk halaman statistik dashboard
+│   └── MahasiswaController.php     # Mengatur daftar mahasiswa, profil, dan detail per NIM
+│
+├── resources/views/
+│   ├── layouts/
+│   │   └── app.blade.php           # Kerangka dasar HTML & CSS utama
+│   ├── partials/
+│   │   ├── navbar.blade.php        # Menu navigasi atas (deteksi halaman aktif otomatis)
+│   │   └── footer.blade.php        # Bagian catatan kaki di bawah
+│   ├── components/
+│   │   └── kartu.blade.php         # Komponen kartu reusable
+│   ├── mahasiswa/
+│   │   ├── index.blade.php         # Halaman tabel semua mahasiswa
+│   │   ├── profil.blade.php        # Halaman profil
+│   │   └── show.blade.php          # Halaman rincian mahasiswa berdasarkan NIM
+│   ├── beranda.blade.php           # Tampilan beranda
+│   ├── dashboard.blade.php         # Tampilan dashboard
+│   ├── kontak.blade.php            # Tampilan kontak
+│   └── tentang.blade.php           # Tampilan tentang kami
+│
+└── routes/
+    └── web.php                     # Daftar seluruh rute/URL aplikasi
+
+## 💡 Fitur Tampilan Menarik
+
+- **Menu Aktif Otomatis**: Pada navigasi (`navbar.blade.php`), digunakan fungsi `request()->routeIs(...)` agar menu yang sedang aktif otomatis mendeteksi tanda khusus (seperti garis bawah atau teks tebal).
+- **Layout Terpusat**: Semua halaman mewarisi struktur dari `@extends('layouts.app')`, sehingga perubahan tata letak global cukup dilakukan di satu file saja.
