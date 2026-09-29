@@ -127,9 +127,3 @@ sim-mahasiswa/
 └── routes/
 
     └── web.php                      # Daftar seluruh rute/URL aplikasi
-
-
-## 💡 Fitur Tampilan Menarik
-
-- **Menu Aktif Otomatis**: Pada navigasi (`navbar.blade.php`), digunakan fungsi `request()->routeIs(...)` agar menu yang sedang aktif otomatis mendeteksi tanda khusus (seperti garis bawah atau teks tebal).
-- **Layout Terpusat**: Semua halaman mewarisi struktur dari `@extends('layouts.app')`, sehingga perubahan tata letak global cukup dilakukan di satu file saja.
