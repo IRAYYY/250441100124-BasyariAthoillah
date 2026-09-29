@@ -82,28 +82,28 @@ Supaya mudah dipelajari, file-file utama dalam proyek ini disusun dengan struktu
 
 sim-mahasiswa/
 ├── app/Http/Controllers/
-│   ├── DashboardController.php     # Mengatur data untuk halaman statistik dashboard
-│   └── MahasiswaController.php     # Mengatur daftar mahasiswa, profil, dan detail per NIM
+│   ├── DashboardController.php      # Mengatur data untuk halaman statistik dashboard
+│   └── MahasiswaController.php      # Mengatur daftar mahasiswa, profil, dan detail per NIM
 │
 ├── resources/views/
 │   ├── layouts/
-│   │   └── app.blade.php           # Kerangka dasar HTML & CSS utama
+│   │   └── app.blade.php            # Kerangka dasar HTML & CSS utama
 │   ├── partials/
-│   │   ├── navbar.blade.php        # Menu navigasi atas (deteksi halaman aktif otomatis)
-│   │   └── footer.blade.php        # Bagian catatan kaki di bawah
+│   │   ├── navbar.blade.php         # Menu navigasi atas (otomatis mendeteksi halaman aktif)
+│   │   └── footer.blade.php         # Bagian catatan kaki di bawah
 │   ├── components/
-│   │   └── kartu.blade.php         # Komponen kartu reusable
+│   │   └── kartu.blade.php          # Komponen kartu reusable
 │   ├── mahasiswa/
-│   │   ├── index.blade.php         # Halaman tabel semua mahasiswa
-│   │   ├── profil.blade.php        # Halaman profil
-│   │   └── show.blade.php          # Halaman rincian mahasiswa berdasarkan NIM
-│   ├── beranda.blade.php           # Tampilan beranda
-│   ├── dashboard.blade.php         # Tampilan dashboard
-│   ├── kontak.blade.php            # Tampilan kontak
-│   └── tentang.blade.php           # Tampilan tentang kami
+│   │   ├── index.blade.php          # Halaman tabel semua mahasiswa
+│   │   ├── profil.blade.php         # Halaman profil
+│   │   └── show.blade.php           # Halaman rincian mahasiswa berdasarkan NIM
+│   ├── beranda.blade.php            # Tampilan beranda
+│   ├── dashboard.blade.php          # Tampilan dashboard
+│   ├── kontak.blade.php             # Tampilan kontak
+│   └── tentang.blade.php            # Tampilan tentang kami
 │
 └── routes/
-    └── web.php                     # Daftar seluruh rute/URL aplikasi
+    └── web.php                      # Daftar seluruh rute/URL aplikasi
 
 ## 💡 Fitur Tampilan Menarik
 
